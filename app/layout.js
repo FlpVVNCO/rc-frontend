@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import ThemeRegistry from "../utils/ThemeRegistry";
 import { AuthProvider } from "../context/AuthContext";
 import { BookProvider } from "../context/BookContext";
+import Providers from "./Providers";
 
 export default function RootLayout({ children }) {
   return (
@@ -14,14 +15,15 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeRegistry options={{ key: "mui-theme" }}>
           <CssBaseline />
-
-          <BookProvider>
-            <AuthProvider>
-              <Navbar />
-              <Toolbar />
-              {children}
-            </AuthProvider>
-          </BookProvider>
+          <Providers>
+            <BookProvider>
+              <AuthProvider>
+                <Navbar />
+                <Toolbar />
+                {children}
+              </AuthProvider>
+            </BookProvider>
+          </Providers>
         </ThemeRegistry>
       </body>
     </html>

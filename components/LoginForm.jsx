@@ -3,6 +3,7 @@ import { Box, Button, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../hooks/useAuth";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   const {
@@ -16,8 +17,15 @@ export default function LoginForm() {
   const router = useRouter();
 
   const onSubmit = handleSubmit(async (data) => {
-    loginSignIn(data);
-    router.push("/books");
+    // loginSignIn(data);
+    // router.push("/books");
+    const { email, password } = data;
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    if (res?.ok) return router.push("/books");
   });
 
   return (
