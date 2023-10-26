@@ -66,24 +66,20 @@ export const BookProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (search) {
-      fetchBookBySearch({ search });
-    }
-  }, [search]);
 
-  useEffect(() => {
-    fetchBooksByFilter({ page, categories });
-  }, [page, categories]);
+
+
 
   return (
     <BookContext.Provider
       value={{
         books,
         fetchBooksByFilter,
+        fetchBookBySearch,
         router,
         pathname,
         searchParams,
+        search,
         createQueryString,
         getBookByTitle,
         book,

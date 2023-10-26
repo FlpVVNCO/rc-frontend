@@ -1,12 +1,19 @@
 "use client";
 import { Box, Button, InputAdornment, TextField } from "@mui/material";
-import React from "react";
+import { useEffect } from "react";
 import { useBook } from "../hooks/useBook";
 import { useForm } from "react-hook-form";
 import { FiSearch } from "react-icons/fi";
 
 const BookSearch = () => {
-  const { router, createQueryString, pathname } = useBook();
+  const { router, createQueryString, pathname, fetchBookBySearch, search } =
+    useBook();
+
+  useEffect(() => {
+    if (search) {
+      fetchBookBySearch({ search });
+    }
+  }, [search]);
 
   const { query } = router;
   const { register, handleSubmit } = useForm();

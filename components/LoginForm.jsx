@@ -1,8 +1,8 @@
 "use client";
 import { Box, Button, TextField } from "@mui/material";
-import { useSession, signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../hooks/useAuth";
 
 export default function LoginForm() {
   const {
@@ -11,20 +11,12 @@ export default function LoginForm() {
     formState: { errors },
   } = useForm();
 
-  const { data: session } = useSession();
+  const { loginSignIn } = useAuth();
 
   const router = useRouter();
 
-  console.log("user", session?.user);
-
   const onSubmit = handleSubmit(async (data) => {
-    const { email, password } = data;
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-    if (res?.ok) return router.push("/books");
+    loginSignIn(data);
   });
 
   return (

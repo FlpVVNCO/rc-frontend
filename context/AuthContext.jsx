@@ -7,6 +7,7 @@ import {
   logoutRequest,
   profileRequest,
 } from "../api/auth";
+import { useRouter } from "next/navigation";
 
 export const AuthContext = createContext();
 
@@ -18,10 +19,12 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState([]);
 
+  const router = useRouter();
+
   const signup = async (user) => {
     try {
       const res = await registerRequest(user);
-      setUser(res.data);
+
       // setIsAuthenticated(true);
     } catch (error) {
       console.log(error.response);
@@ -29,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signin = async (user) => {
+  const loginSignIn = async (user) => {
     try {
       const res = await loginRequest(user);
       // if (res.data.username.includes("admin")) {
@@ -39,6 +42,8 @@ export const AuthProvider = ({ children }) => {
       // }
       // setIsAuthenticated(true);
       // setUser(res.data);
+      setUser(res.data);
+      router.push("/books");
       console.log(res.data);
     } catch (error) {
       if (Array.isArray(error.response.data)) {
@@ -115,7 +120,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         signup,
-        signin,
+        loginSignIn,
       }}
     >
       {children}

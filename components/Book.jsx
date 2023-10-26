@@ -1,20 +1,11 @@
 "use client";
-import {
-  Box,
-  Button,
-  Chip,
-  Grid,
-  List,
-  ListItem,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Chip, Grid, List, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useBook } from "../hooks/useBook";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import NextImage from "../public/next.svg";
-import { FiBook, FiBookOpen, FiEye, FiPlus, FiStar } from "react-icons/fi";
+import { FiBookOpen, FiEye, FiPlus, FiStar } from "react-icons/fi";
 
 const Book = () => {
   const { book, getBookByTitle } = useBook();

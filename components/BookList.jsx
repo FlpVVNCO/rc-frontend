@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect } from "react";
 // custom hook que llama al context
 import { useBook } from "../hooks/useBook";
 import { Box, Chip, Grid, Typography } from "@mui/material";
@@ -8,12 +10,27 @@ import Link from "next/link";
 import NextImage from "../public/next.svg";
 
 const BookList = () => {
-  const { books, getBookByTitle, router } = useBook();
+  const {
+    books,
+    getBookByTitle,
+    router,
+    search,
+    page,
+    categories,
+    fetchBookBySearch,
+    fetchBooksByFilter,
+  } = useBook();
 
   const handleBook = (title) => {
     getBookByTitle(title);
     router.push(`/books/${title.replace(/\//g, "")}`);
   };
+
+  useEffect(() => {
+    if (!search) {
+      fetchBooksByFilter({ page, categories });
+    }
+  }, [page, categories]);
 
   return (
     <Grid container>
