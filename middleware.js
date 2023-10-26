@@ -18,6 +18,7 @@ export async function middleware(req) {
     const requestedPage = req.nextUrl.pathname;
     const url = req.nextUrl.clone();
     url.pathname = `/login`;
+    url.search = `p=${requestedPage}`;
     return NextResponse.redirect(url);
   }
 }
