@@ -1,5 +1,12 @@
 "use client";
-import { Alert, Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Snackbar,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../hooks/useAuth";
 import Link from "next/link";
@@ -11,7 +18,7 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm();
 
-  const { signup, errors: registerError } = useAuth();
+  const { signup, errors: registerError, error, setError } = useAuth();
 
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
@@ -94,6 +101,23 @@ export default function RegisterForm() {
             SignIn
           </Typography>
         </Box>
+
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          autoHideDuration={2000}
+          open={error}
+        >
+          <Alert
+            onClose={() => setError(false)}
+            variant="filled"
+            severity="error"
+          >
+            Email in use!
+          </Alert>
+        </Snackbar>
       </Box>
     </Box>
   );

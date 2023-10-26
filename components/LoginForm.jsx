@@ -12,6 +12,7 @@ import {
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "../hooks/useAuth";
 
 export default function LoginForm() {
   const { register, handleSubmit } = useForm();
@@ -127,7 +128,7 @@ export default function LoginForm() {
           variant="filled"
           severity="error"
         >
-          Error invalid credentials
+          Error invalid credentials or confirm your email
         </Alert>
       </Snackbar>
     </Box>
