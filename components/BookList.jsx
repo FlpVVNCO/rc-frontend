@@ -1,12 +1,10 @@
 "use client";
-
 import { useEffect } from "react";
 // custom hook que llama al context
 import { useBook } from "../hooks/useBook";
-import { Box, Chip, Grid, Typography } from "@mui/material";
+import { Box, Chip, Grid, Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import FilterList from "./FilterList";
-import Link from "next/link";
 import NextImage from "../public/next.svg";
 
 const BookList = () => {
@@ -17,8 +15,12 @@ const BookList = () => {
     search,
     page,
     categories,
-    fetchBookBySearch,
+    authors,
+    createQueryString,
+    ratingBook,
+    getBookByAuthors,
     fetchBooksByFilter,
+    getBookByCategorie,
   } = useBook();
 
   const handleBook = (title) => {
@@ -26,11 +28,27 @@ const BookList = () => {
     router.push(`/books/${title.replace(/\//g, "")}`);
   };
 
+  const handleBookAuthor = (author) => {
+    getBookByAuthors(author);
+    router.replace("/search");
+    router.push("/search" + "?" + createQueryString("search", author));
+  };
+
+  const handleBookCategorie = (categorie) => {
+    getBookByCategorie(categorie);
+    router.replace("/search");
+    router.push("/search" + "?" + createQueryString("search", categorie));
+  };
+
+  const handleVote = (id, rate) => {
+    ratingBook(id, rate);
+  };
+
   useEffect(() => {
     if (!search) {
-      fetchBooksByFilter({ page, categories });
+      fetchBooksByFilter({ page });
     }
-  }, [page, categories]);
+  }, [page]);
 
   return (
     <Grid container>
@@ -73,7 +91,12 @@ const BookList = () => {
               />
             </Box>
             <Box sx={{ overflow: "hidden" }}>
-              <Typography fontSize={18} fontWeight={600}>
+              <Typography
+                fontSize={18}
+                fontWeight={600}
+                sx={{ cursor: "pointer" }}
+                onClick={() => handleBook(book.title)}
+              >
                 {book.title}
               </Typography>
               <Box
@@ -91,11 +114,11 @@ const BookList = () => {
                 </Typography>
                 {book.authors.map((author, i) => (
                   <Typography
+                    onClick={() => handleBookAuthor(author)}
                     fontWeight={400}
                     key={i}
-                    component={Link}
-                    href=""
                     sx={{
+                      cursor: "pointer",
                       fontSize: { xs: 11, sm: 13 },
                       textDecoration: "none",
                       "&:hover": {
@@ -107,6 +130,15 @@ const BookList = () => {
                   </Typography>
                 ))}
               </Box>
+
+              <Rating
+                // value={0}
+                size="small"
+                onChange={(event, newValue) => {
+                  handleVote(book?.book_id, newValue);
+                }}
+              />
+
               {book.short_description ? (
                 <Typography
                   fontSize={15}
@@ -139,8 +171,11 @@ const BookList = () => {
               {book.categories.map((categorie, i) => (
                 <Chip
                   label={categorie}
+                  clickable
+                  onClick={() => handleBookCategorie(categorie)}
                   key={i}
-                  sx={{ mr: 1, bgcolor: "secondary.main", color: "white" }}
+                  color="secondary"
+                  sx={{ mr: 1, color: "white" }}
                 />
               ))}
             </Box>

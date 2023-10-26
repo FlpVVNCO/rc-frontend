@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useState } from "react";
-import { registerRequest } from "../axios/auth";
+import { registerRequest, profileRequest } from "../axios/auth";
+
 import { useRouter } from "next/navigation";
 
 export const AuthContext = createContext();
@@ -18,24 +19,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // const logout = async () => {
-  //   try {
-  //     await logoutRequest();
-  //     setIsAuthenticated(false);
-  //     setIsAdmin(false);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // const getProfile = async (user) => {
-  //   try {
-  //     const res = await profileRequest(user);
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <AuthContext.Provider

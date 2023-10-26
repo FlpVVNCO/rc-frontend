@@ -3,7 +3,7 @@ import { Grid, Pagination } from "@mui/material";
 import React from "react";
 import { useBook } from "../hooks/useBook";
 
-const Paginator = () => {
+const Paginator = (props) => {
   const { books, router, pathname, createQueryString, page } = useBook();
 
   let countPage = Math.ceil(300 / (books.length || 20));

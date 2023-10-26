@@ -17,8 +17,6 @@ export default function RegisterForm() {
     signup(values);
   });
 
-  console.log(registerError);
-
   return (
     <Box
       component="form"
@@ -82,7 +80,7 @@ export default function RegisterForm() {
           }}
         >
           <Typography component="span" color="primary" mr={1}>
-            Do you have account?
+            Do you have an account?
           </Typography>
           <Typography
             sx={{

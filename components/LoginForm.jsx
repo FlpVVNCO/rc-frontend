@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginForm() {
   const { register, handleSubmit } = useForm();
@@ -75,14 +76,43 @@ export default function LoginForm() {
         sx={{ mb: 2 }}
         {...register("password", { required: true })}
       />
-      <Button
-        type="submit"
-        color="secondary"
-        sx={{ fontSize: 13, color: "white", borderRadius: "12px" }}
-        variant="contained"
-      >
-        SigIn
-      </Button>
+
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Button
+          type="submit"
+          color="secondary"
+          sx={{ fontSize: 13, color: "white", borderRadius: "12px" }}
+          variant="contained"
+        >
+          SigIn
+        </Button>
+
+        <Box
+          component={Link}
+          href={"/register"}
+          sx={{
+            textDecoration: "none",
+            "&hover": {
+              textDecoration: "underline",
+            },
+          }}
+        >
+          <Typography component="span" color="primary" mr={1}>
+            Don't have an account?
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: 16,
+
+              borderRadius: "12px",
+              color: "secondary.main",
+            }}
+            variant="contained"
+          >
+            Register here!
+          </Typography>
+        </Box>
+      </Box>
 
       <Snackbar
         anchorOrigin={{

@@ -1,8 +1,4 @@
-import { Grid, Toolbar, Typography } from "@mui/material";
-
-import FilterList from "../../components/FilterList";
-import BookSearch from "../../components/BookSearch";
-
+import { Grid } from "@mui/material";
 import dynamic from "next/dynamic";
 
 const BookSearchComponent = dynamic(() => import("../../components/BookList"));

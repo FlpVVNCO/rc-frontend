@@ -8,11 +8,8 @@ export async function middleware(req) {
   });
 
   if (session && session.user.confirmed === 1) {
-    console.log("está confirmado");
-
     return NextResponse.next();
   } else {
-    console.log("no está confirmado");
     const requestedPage = req.nextUrl.pathname;
     const url = req.nextUrl.clone();
     url.pathname = `/login`;

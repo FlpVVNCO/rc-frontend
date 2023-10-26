@@ -6,6 +6,7 @@ import {
   Grid,
   List,
   Popper,
+  Rating,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -13,12 +14,20 @@ import { useBook } from "../hooks/useBook";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import NextImage from "../public/next.svg";
-import { FiBookOpen, FiCheck, FiEye, FiPlus, FiStar } from "react-icons/fi";
+import {
+  FiBook,
+  FiBookOpen,
+  FiCheck,
+  FiEye,
+  FiPlus,
+  FiStar,
+} from "react-icons/fi";
 import { useSession } from "next-auth/react";
 
 const Book = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [click, setClick] = useState(false);
+
 
   const { book, getBookByTitle, getBookListByUser, list, addBookToList } =
     useBook();
@@ -36,7 +45,6 @@ const Book = () => {
   };
 
   const addToList = (listId) => {
-    // setAnchorEl(anchorEl ? null : event.currentTarget);
 
     addBookToList(listId, book[0].book_id);
   };
@@ -47,6 +55,8 @@ const Book = () => {
   useEffect(() => {
     getBookByTitle(name);
   }, [name]);
+
+  
 
   return (
     <Grid container>
@@ -91,6 +101,8 @@ const Book = () => {
               {book[0]?.title}
             </Typography>
 
+            <Rating value={book[0]?.rating ?? 0} readOnly />
+
             <List
               sx={{
                 display: "flex",
@@ -109,6 +121,12 @@ const Book = () => {
               <Chip
                 icon={<FiStar color="white" />}
                 label="Votes: 0"
+                sx={{ bgcolor: "primary.main", color: "white" }}
+              />
+
+              <Chip
+                icon={<FiBook color="white" />}
+                label={`Page: ${book[0]?.page_count}`}
                 sx={{ bgcolor: "primary.main", color: "white" }}
               />
             </List>
@@ -135,7 +153,7 @@ const Book = () => {
                   p: 1,
                 }}
               >
-                Start reading
+                Add to
               </Button>
               <Button
                 variant="contained"

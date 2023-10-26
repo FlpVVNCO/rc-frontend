@@ -1,11 +1,14 @@
 "use client";
-import { createContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useCallback } from "react";
 import {
   getBooks,
   getBook,
   getBooksSearch,
   getBookList,
   insertBook,
+  voteBook,
+  getCategories,
+  getAuthors,
 } from "../axios/books";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
@@ -30,7 +33,7 @@ export const BookProvider = ({ children }) => {
   };
 
   // desestructuración del objeto
-  const { page, categories, search } = getUrlParams();
+  const { page, categories, search, authors } = getUrlParams();
 
   const createQueryString = useCallback(
     (name, value) => {
@@ -56,7 +59,6 @@ export const BookProvider = ({ children }) => {
     try {
       const res = await getBooksSearch(search);
       setBooks(res.data);
-      console.log(res.data);
     } catch (error) {
       console.error(error);
       setErrors(error.message);
@@ -67,7 +69,24 @@ export const BookProvider = ({ children }) => {
     try {
       const res = await getBook(title);
       setBook(res.data);
-      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getBookByCategorie = async (categorie) => {
+    try {
+      const res = await getCategories(categorie);
+      setBooks(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getBookByAuthors = async (author) => {
+    try {
+      const res = await getAuthors(author);
+      setBooks(res.data);
     } catch (error) {
       console.error(error);
     }
@@ -77,7 +96,6 @@ export const BookProvider = ({ children }) => {
     try {
       const res = await getBookList(id);
       setList(res.data);
-      console.log(res.data);
     } catch (error) {
       console.error(error);
     }
@@ -86,7 +104,14 @@ export const BookProvider = ({ children }) => {
   const addBookToList = async (listId, bookId) => {
     try {
       const res = await insertBook({ listId, bookId });
-      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const ratingBook = async (bookId, rate) => {
+    try {
+      const res = await voteBook(bookId, rate);
     } catch (error) {
       console.error(error);
     }
@@ -106,9 +131,13 @@ export const BookProvider = ({ children }) => {
         createQueryString,
         getBookByTitle,
         addBookToList,
+        ratingBook,
+        getBookByAuthors,
+        getBookByCategorie,
         book,
         page,
         categories,
+        authors,
         errors,
         list,
       }}
