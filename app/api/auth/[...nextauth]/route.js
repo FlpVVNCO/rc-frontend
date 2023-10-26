@@ -34,6 +34,9 @@ const handler = NextAuth({
   session: {
     strategy: "jwt",
   },
+  cookies: {
+    httpOnly: false,
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) token.user = user;

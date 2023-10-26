@@ -14,6 +14,7 @@ export async function middleware(req) {
     console.log("está confirmado");
     return NextResponse.next();
   } else {
+    console.log("no está confirmado");
     const requestedPage = req.nextUrl.pathname;
     const url = req.nextUrl.clone();
     url.pathname = `/login`;
@@ -23,5 +24,5 @@ export async function middleware(req) {
 }
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/books/((?!general).*)", "/search/", "/profile/", "/books/"],
+  matcher: ["/", "/books/", "/search/", "/profile/"],
 };
