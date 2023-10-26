@@ -17,6 +17,7 @@ export default function LoginForm() {
 
   const onSubmit = handleSubmit(async (data) => {
     loginSignIn(data);
+    router.push("/books");
   });
 
   return (

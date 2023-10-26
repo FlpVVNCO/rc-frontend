@@ -14,8 +14,6 @@ const BookSearch = () => {
       fetchBookBySearch({ search });
     }
   }, [search]);
-
-  const { query } = router;
   const { register, handleSubmit } = useForm();
 
   const onSubmit = handleSubmit((data) => {
