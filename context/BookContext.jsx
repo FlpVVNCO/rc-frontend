@@ -1,6 +1,12 @@
 "use client";
 import { createContext, useState, useEffect, useCallback } from "react";
-import { getBooks, getBook, getBooksSearch } from "../api/books";
+import {
+  getBooks,
+  getBook,
+  getBooksSearch,
+  getBookList,
+  insertBook,
+} from "../axios/books";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 export const BookContext = createContext();
@@ -8,6 +14,7 @@ export const BookContext = createContext();
 export const BookProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [book, setBook] = useState([]);
+  const [list, setList] = useState([]);
   const [errors, setErrors] = useState([]);
 
   const router = useRouter();
@@ -66,9 +73,24 @@ export const BookProvider = ({ children }) => {
     }
   };
 
+  const getBookListByUser = async (id) => {
+    try {
+      const res = await getBookList(id);
+      setList(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-
-
+  const addBookToList = async (listId, bookId) => {
+    try {
+      const res = await insertBook({ listId, bookId });
+      console.log(res);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <BookContext.Provider
@@ -76,16 +98,19 @@ export const BookProvider = ({ children }) => {
         books,
         fetchBooksByFilter,
         fetchBookBySearch,
+        getBookListByUser,
         router,
         pathname,
         searchParams,
         search,
         createQueryString,
         getBookByTitle,
+        addBookToList,
         book,
         page,
         categories,
         errors,
+        list,
       }}
     >
       {children}

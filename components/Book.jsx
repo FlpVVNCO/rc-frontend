@@ -1,18 +1,48 @@
 "use client";
-import { Box, Button, Chip, Grid, List, Typography } from "@mui/material";
-import { useEffect } from "react";
+import {
+  Box,
+  Button,
+  Chip,
+  Grid,
+  List,
+  Popper,
+  Typography,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import { useBook } from "../hooks/useBook";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import NextImage from "../public/next.svg";
-import { FiBookOpen, FiEye, FiPlus, FiStar } from "react-icons/fi";
+import { FiBookOpen, FiCheck, FiEye, FiPlus, FiStar } from "react-icons/fi";
+import { useSession } from "next-auth/react";
 
 const Book = () => {
-  const { book, getBookByTitle } = useBook();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [click, setClick] = useState(false);
+
+  const { book, getBookByTitle, getBookListByUser, list, addBookToList } =
+    useBook();
+
+  const { data: session } = useSession();
 
   const params = useParams();
 
   const { name } = params;
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+    getBookListByUser(session?.user.id);
+    setClick(!click);
+  };
+
+  const addToList = (listId) => {
+    // setAnchorEl(anchorEl ? null : event.currentTarget);
+
+    addBookToList(listId, book[0].book_id);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
 
   useEffect(() => {
     getBookByTitle(name);
@@ -95,6 +125,7 @@ const Book = () => {
                 variant="contained"
                 fullWidth
                 color="secondary"
+                onClick={handleClick}
                 startIcon={<FiBookOpen />}
                 sx={{
                   borderRadius: "50vh 0 0 50vh",
@@ -117,6 +148,39 @@ const Book = () => {
               >
                 <FiPlus fontSize={24} fontWeight={500} />
               </Button>
+
+              <Popper id={id} open={open} anchorEl={anchorEl}>
+                <Box sx={{ display: "flex" }}>
+                  {list.map((list) => (
+                    <Box
+                      key={list.book_list_id}
+                      sx={{
+                        borderRadius: "12px",
+                        p: 1,
+                      }}
+                    >
+                      <Chip
+                        color={
+                          list.name_list === click ? "primary" : "secondary"
+                        }
+                        sx={{ color: "white", fontSize: 14 }}
+                        onClick={() =>
+                          addToList(list.book_list_id, setClick(list.name_list))
+                        }
+                        label={list.name_list}
+                        icon={
+                          list.name_list === click ? (
+                            <FiCheck fontSize={20} />
+                          ) : (
+                            <FiPlus fontSize={20} />
+                          )
+                        }
+                        clickable
+                      />
+                    </Box>
+                  ))}
+                </Box>
+              </Popper>
             </Box>
           </Box>
         </Box>

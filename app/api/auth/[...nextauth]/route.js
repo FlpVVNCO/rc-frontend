@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { loginRequest } from "../../../../api/auth";
+import { loginRequest } from "../../../../axios/auth";
 
-const handler = NextAuth({
+export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
@@ -34,9 +34,6 @@ const handler = NextAuth({
   session: {
     strategy: "jwt",
   },
-  cookies: {
-    httpOnly: false,
-  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) token.user = user;
@@ -44,10 +41,11 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       session.user = token.user;
-
       return session;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };

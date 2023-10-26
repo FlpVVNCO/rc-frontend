@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
 import { getToken } from "next-auth/jwt";
-import Cookies from "js-cookie";
 
 export async function middleware(req) {
   const session = await getToken({
@@ -12,6 +9,7 @@ export async function middleware(req) {
 
   if (session && session.user.confirmed === 1) {
     console.log("está confirmado");
+
     return NextResponse.next();
   } else {
     console.log("no está confirmado");
