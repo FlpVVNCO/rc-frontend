@@ -99,5 +99,5 @@ export async function middleware(request) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/books/:path*", "/search/:path*", "/profile/:path"],
+  matcher: ["/", "/books/((?!books).*)", "/search/((?!search).*)", "/profile"],
 };
