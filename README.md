@@ -5,6 +5,7 @@ Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desaf�
 Registrate en la aplicación, confirma tu usuario y luego vuelve a la página para poder iniciar sesión.
 Dentro encontrarás libros de amazon, los cuales puedes consultar uno por una clickeando la imagen o el titulo. 
 También permite filtrar por busqueda, clickea las categorias y los autores!
+
 Esta desplegado en vercel.
 
 [Visitar la aplicación desplegada](https://readconnect.vercel.app/)
