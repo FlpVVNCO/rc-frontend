@@ -7,17 +7,16 @@ export async function middleware(req) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  if (!session || session.user.confirmed === 0) {
-    const requestedPage = req.nextUrl.pathname;
-    const url = req.nextUrl.clone();
-    url.pathname = `/login`;
-    url.search = `p=${requestedPage}`;
-    return NextResponse.redirect(url);
+  if (!(session && session.user.confirmed === 1)) {
+    // Si la sesión no existe o el usuario no está confirmado, redirige a la página de inicio de sesión ('/login')
+    const redirectURL = new URL("/login", req.nextUrl.origin); // Construye una URL absoluta
+    return NextResponse.redirect(redirectURL.href); // Utiliza la URL absoluta
   }
 
   return NextResponse.next();
 }
-// // See "Matching Paths" below to learn more
+
 export const config = {
+  // Define aquí las rutas que deseas que sean manejadas por el middleware
   matcher: ["/", "/search", "/profile", "/books/:path*"],
 };

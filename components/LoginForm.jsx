@@ -31,6 +31,7 @@ export default function LoginForm() {
       redirect: false,
     });
     if (res?.ok) return router.push("/books");
+    else setError(true);
   });
 
   return (
