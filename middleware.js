@@ -3,8 +3,20 @@ import { NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 export default withAuth(
-  function middleware(req) {
-    console.log(req.nextUrl.token);
+  async function middleware(req) {
+    const session = await getToken({
+      req,
+      secret: process.env.NEXTAUTH_SECRET,
+    });
+
+    if (!session) {
+      const requestedPage = req.nextUrl.pathname;
+      const url = req.nextUrl.clone();
+      url.pathname = `/login`;
+      url.search = `p=${requestedPage}`;
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next();
   },
   {
     callbacks: {
@@ -33,5 +45,5 @@ export default withAuth(
 // }
 // // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/search", "/profile", "/books"],
+  matcher: ["/", "/search", "/profile", "/books/:path*"],
 };
