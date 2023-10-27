@@ -16,12 +16,12 @@ const handler = NextAuth({
         try {
           const res = await loginRequest(credentials);
 
-          if (res.data.confirmed === 1) {
-            return res.data;
-          } else {
-            // Si el correo no está confirmado, puedes lanzar una excepción o retornar un mensaje de error
-            return console.log("confirma tu correo");
-          }
+          // if (res.data.confirmed === 1) {
+          return res.data;
+          // } else {
+          //   // Si el correo no está confirmado, puedes lanzar una excepción o retornar un mensaje de error
+          //   return console.log("confirma tu correo");
+          // }
         } catch (error) {
           console.error(error);
         }
