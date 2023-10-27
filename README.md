@@ -2,6 +2,7 @@
 
 
 Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desafío para Lab Microsystem. 
+
 [Visitar la aplicación desplegada](https://readconnect.vercel.app/)
 
 ## Comenzando 🚀
