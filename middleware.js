@@ -1,4 +1,3 @@
-export { default } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 

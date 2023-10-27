@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { loginRequest } from "../../../../axios/auth";
 
-export const authOptions = {
+const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
@@ -41,11 +41,10 @@ export const authOptions = {
     },
     async session({ session, token }) {
       session.user = token.user;
+
       return session;
     },
   },
-};
-
-const handler = NextAuth(authOptions);
+});
 
 export { handler as GET, handler as POST };
