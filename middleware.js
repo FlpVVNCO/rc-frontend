@@ -12,10 +12,8 @@ export async function middleware(req) {
     const redirectURL = new URL("/login", req.nextUrl.origin);
     return NextResponse.redirect(redirectURL.href);
   }
-
   return NextResponse.next();
 }
-
 export const config = {
   // Define aquí las rutas que deseas que sean manejadas por el middleware
   matcher: ["/", "/search", "/profile", "/book"],
