@@ -25,7 +25,7 @@ const BookList = () => {
 
   const handleBook = (title) => {
     getBookByTitle(title);
-    router.push(`/bk/${title.replace(/\//g, "")}`);
+    router.push(`/book/${title.replace(/\//g, "")}`);
   };
 
   const handleBookAuthor = (author) => {
