@@ -18,7 +18,6 @@ const Profile = () => {
 
   const { data: session } = useSession();
 
-  console.log(session);
 
   const onSubmit = handleSubmit(async (data) => {
     console.log(data.name);

@@ -20,7 +20,7 @@ import DrawerMenu from "./DrawerMenu";
 const Links = [
   {
     label: "Books",
-    route: "/books",
+    route: "/book",
   },
 ];
 const Navbar = () => {
@@ -56,7 +56,7 @@ const Navbar = () => {
             fontWeight={600}
             color="white"
             component={Link}
-            href="/books"
+            href="/book"
             sx={{ mr: 2, ml: 2, flexGrow: 1, textDecoration: "none" }}
           >
             ReadConnect

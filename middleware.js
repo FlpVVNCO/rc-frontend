@@ -4,10 +4,8 @@ import { getToken } from "next-auth/jwt";
 export async function middleware(req) {
   const session = await getToken({
     req,
-    // secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
   });
-
-  console.log(session?.user);
 
   if (!(session && session.user.confirmed === 1)) {
     // Si la sesión no existe o el usuario no está confirmado, redirige a la página de inicio de sesión ('/login')
@@ -20,5 +18,5 @@ export async function middleware(req) {
 
 export const config = {
   // Define aquí las rutas que deseas que sean manejadas por el middleware
-  matcher: ["/", "/search", "/profile", "/books/:path*"],
+  matcher: ["/", "/search", "/profile", "/book/:path*"],
 };
