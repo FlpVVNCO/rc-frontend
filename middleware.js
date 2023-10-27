@@ -15,7 +15,7 @@ export async function middleware(req) {
     return NextResponse.redirect(redirectURL.href);
   }
 
-  // return NextResponse.next();
+  return NextResponse.next();
 }
 
 export const config = {
