@@ -16,5 +16,5 @@ export async function middleware(req) {
 }
 export const config = {
   // Define aquí las rutas que deseas que sean manejadas por el middleware
-  matcher: ["/", "/search", "/profile", "/book"],
+  matcher: ["/", "/search", "/profile", "/book/:path*"],
 };
