@@ -1,25 +1,21 @@
 import { Grid, Toolbar } from "@mui/material";
-import dynamic from "next/dynamic";
-
-const BookComponent = dynamic(() => import("../../../components/Book"));
-const DescriptionBookComponent = dynamic(() =>
-  import("../../../components/DescriptionBook")
-);
-const ReviewsComponent = dynamic(() => import("../../../components/Reviews"));
+import Book from "../../../components/Book";
+import DescriptionBook from "../../../components/DescriptionBook";
+import Reviews from "../../../components/Reviews";
 
 const BookPage = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <BookComponent />
+        <Book />
       </Grid>
       <Toolbar />
       <Grid item xs={12}>
-        <DescriptionBookComponent />
+        <DescriptionBook />
       </Grid>
       <Toolbar />
       <Grid item xs={12}>
-        <ReviewsComponent />
+        <Reviews />
       </Grid>
       <Toolbar />
     </Grid>
