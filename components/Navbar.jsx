@@ -17,12 +17,6 @@ import BookSearch from "./BookSearch";
 import { useSession, signOut } from "next-auth/react";
 import DrawerMenu from "./DrawerMenu";
 
-const Links = [
-  {
-    label: "Books",
-    route: "/bk",
-  },
-];
 const Navbar = () => {
   const { data: session } = useSession();
 
@@ -68,20 +62,14 @@ const Navbar = () => {
                 <BookSearch />
               </Box>
               <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 2, mr: 5 }}>
-                {Links.map(({ label, route }) => (
-                  <Typography
-                    sx={{ color: "white" }}
-                    fontWeight={600}
-                    key={route}
+                <Typography sx={{ color: "white" }} fontWeight={600}>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    href="/book"
                   >
-                    <Link
-                      style={{ textDecoration: "none", color: "white" }}
-                      href={route}
-                    >
-                      {label}
-                    </Link>
-                  </Typography>
-                ))}
+                    Books
+                  </Link>
+                </Typography>
               </Box>
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
