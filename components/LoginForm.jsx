@@ -30,8 +30,8 @@ export default function LoginForm() {
       password,
       redirect: false,
     });
-    if (res?.ok) return router.push("/books");
-    else setError(true);
+    if (res.ok) return router.push("/books");
+    else console.error(res.error);
   });
 
   return (
