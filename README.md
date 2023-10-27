@@ -12,12 +12,14 @@ Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desaf�
    ```
 2. Ve al directorio del proyecto:
 
-   ``` cd repo-del-frontend ```
+   ```cd repo-del-frontend ```
 3. Instala las dependencias utilizando npm:
 
- ```npm install```
+    ```
+      npm install
+    ```
  
-4. Crea un archivo `.env.local` en el directorio raíz del proyecto y configura tus variables de entorno:
+5. Crea un archivo `.env.local` en el directorio raíz del proyecto y configura tus variables de entorno:
 
    ```
    NEXT_PUBLIC_API_URL=https://api.tuapp.com
