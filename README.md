@@ -8,7 +8,7 @@ Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desaf√
 1. Clona este repositorio a tu m√°quina local:
 
    ```
-   git clone https://github.com/tu-usuario/repo-del-frontend.git
+   git clone https://github.com/FlpVVNCO/rc-frontend/
    ```
 
    
