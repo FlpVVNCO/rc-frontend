@@ -32,7 +32,7 @@ export default function LoginForm() {
       redirect: false,
     });
     if (res.ok) {
-      router.push("/bk");
+      router.push("/book");
     } else return setError(true);
   });
 
