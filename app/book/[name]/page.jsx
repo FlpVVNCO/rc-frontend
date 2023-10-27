@@ -1,25 +1,27 @@
 import { Grid, Toolbar } from "@mui/material";
-import Book from "../../../components/Book";
-import DescriptionBook from "../../../components/DescriptionBook";
-import Reviews from "../../../components/Reviews";
+import dynamic from "next/dynamic";
 
-const BookPage = () => {
+const BookComponent = dynamic(() => import("../../../components/Book"));
+const DescriptionBookComponent = dynamic(() =>
+  import("../../../components/DescriptionBook")
+);
+const ReviewsComponent = dynamic(() => import("../../../components/Reviews"));
+
+export default async function BookPage() {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Book />
+        <BookComponent />
       </Grid>
       <Toolbar />
       <Grid item xs={12}>
-        <DescriptionBook />
+        <DescriptionBookComponent />
       </Grid>
       <Toolbar />
       <Grid item xs={12}>
-        <Reviews />
+        <ReviewsComponent />
       </Grid>
       <Toolbar />
     </Grid>
   );
-};
-
-export default BookPage;
+}
