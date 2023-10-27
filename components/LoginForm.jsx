@@ -78,17 +78,18 @@ export default function LoginForm() {
         {...register("password", { required: true })}
       />
 
+      <Button
+        type="submit"
+        color="secondary"
+        sx={{ fontSize: 13, color: "white", borderRadius: "12px" }}
+        variant="contained"
+      >
+        SigIn
+      </Button>
+      
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Button
-          type="submit"
-          color="secondary"
-          sx={{ fontSize: 13, color: "white", borderRadius: "12px" }}
-          variant="contained"
-        >
-          SigIn
-        </Button>
-
         <Box
+          mt={2}
           component={Link}
           href={"/register"}
           sx={{
