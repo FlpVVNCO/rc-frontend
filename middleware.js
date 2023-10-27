@@ -10,10 +10,7 @@ export async function middleware(req) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  if (session && session.user.confirmed === 1) {
-    console.log("está confirmado");
-    return NextResponse.next();
-  } else {
+  if (!session || session.user.confirmed === 0) {
     console.log("no está confirmado");
     const requestedPage = req.nextUrl.pathname;
     const url = req.nextUrl.clone();
@@ -21,6 +18,9 @@ export async function middleware(req) {
     url.search = `p=${requestedPage}`;
     return NextResponse.redirect(url);
   }
+
+  console.log("está confirmado");
+  return NextResponse.next();
 }
 // See "Matching Paths" below to learn more
 export const config = {
