@@ -8,12 +8,14 @@ Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desaf�
 1. Clona este repositorio a tu máquina local:
 
    ```
-   git clone https://github.com/FlpVVNCO/rc-frontend/
+      git clone https://github.com/FlpVVNCO/rc-frontend/
    ```
 2. Ve al directorio del proyecto:
 
-   ```cd repo-del-frontend ```
-3. Instala las dependencias utilizando npm:
+   ```
+      cd repo-del-frontend
+   ```
+4. Instala las dependencias utilizando npm:
 
     ```
       npm install
@@ -22,8 +24,8 @@ Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desaf�
 5. Crea un archivo `.env.local` en el directorio raíz del proyecto y configura tus variables de entorno:
 
    ```
-   NEXT_PUBLIC_API_URL=https://api.tuapp.com
-   NEXTAUTH_URL=https://tuapp.com
+      NEXT_PUBLIC_API_URL=https://api.tuapp.com
+      NEXTAUTH_URL=https://tuapp.com
    ```
 
 Asegúrate de configurar las variables de entorno adecuadamente según tus necesidades.
@@ -31,8 +33,8 @@ Asegúrate de configurar las variables de entorno adecuadamente según tus neces
 5. Inicia el servidor de desarrollo:
 
     ```
-   npm run dev
-   ```
+      npm run dev
+    ```
 _El proyecto se ejecutará en `http://localhost:3000`. Puedes acceder a él desde tu navegador._
    
 ## Dependencias
