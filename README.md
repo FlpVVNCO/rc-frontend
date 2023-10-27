@@ -2,6 +2,9 @@
 
 
 Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desafío para Lab Microsystem. 
+Registrate en la aplicación, confirma tu usuario y luego vuelve a la página para poder iniciar sesión.
+Dentro encontrarás libros de amazon, los cuales puedes consultar uno por una clickeando la imagen o el titulo. 
+También permite filtrar por busqueda, clickea las categorias y los autores!
 
 [Visitar la aplicación desplegada](https://readconnect.vercel.app/)
 
@@ -60,3 +63,9 @@ A continuación, se enumeran las principales dependencias utilizadas en este pro
 - [NextAuth](https://next-auth.js.org/): Un completo sistema de autenticación para aplicaciones web.
 
 - [React Icons](https://react-icons.github.io/react-icons/): Una biblioteca que proporciona iconos populares de fuentes como Font Awesome y más.
+
+## Comentarios
+
+- Ocupé trello para ayudarme con la organización de las tareas.
+- Si faltan cosas es netamente porque con el poco tiempo que tuve fui avanzando.
+- Espero les guste la app, le puse mucho cariño y empeño.
