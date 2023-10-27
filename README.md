@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend para Challenge de Lab Microsystem
 
-## Getting Started
+Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desafío para Lab Microsystem. 
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Instrucciones para Iniciar el Proyecto Localmente
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clona este repositorio a tu máquina local:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+   ```
+   git clone https://github.com/tu-usuario/repo-del-frontend.git
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   
+## Dependencias
 
-## Learn More
+A continuación, se enumeran las principales dependencias utilizadas en este proyecto:
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js](https://nextjs.org/): Un framework de React para la construcción de aplicaciones web modernas.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Material-UI](https://material-ui.com/): Una biblioteca de componentes de interfaz de usuario de React para un diseño atractivo y consistente.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Axios](https://axios-http.com/): Un cliente HTTP basado en Promesas para realizar solicitudes a servidores.
 
-## Deploy on Vercel
+- [NextAuth](https://next-auth.js.org/): Un completo sistema de autenticación para aplicaciones web.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [React Icons](https://react-icons.github.io/react-icons/): Una biblioteca que proporciona iconos populares de fuentes como Font Awesome y más.
