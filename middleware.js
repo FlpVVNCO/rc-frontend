@@ -9,11 +9,11 @@ export async function middleware(req) {
 
   console.log({ session });
 
-  if (!(session && session.user.confirmed === 1)) {
-    // Si la sesión no existe o el usuario no está confirmado, redirige a la página de inicio de sesión ('/login')
-    const redirectURL = new URL("/login", req.nextUrl.origin);
-    return NextResponse.redirect(redirectURL.href); 
-  }
+  // if (!(session && session.user.confirmed === 1)) {
+  //   // Si la sesión no existe o el usuario no está confirmado, redirige a la página de inicio de sesión ('/login')
+  //   const redirectURL = new URL("/books", req.nextUrl.origin);
+  //   return NextResponse.redirect(redirectURL.href);
+  // }
 
   return NextResponse.next();
 }

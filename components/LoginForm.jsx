@@ -29,9 +29,11 @@ export default function LoginForm() {
       email,
       password,
       redirect: false,
+      callbackUrl: "/books",
     });
-    if (res?.ok) return router.push("/books");
-    else setError(true);
+    if (res.ok) {
+      return router.push(res.url);
+    } else setError(true);
   });
 
   return (
