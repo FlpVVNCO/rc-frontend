@@ -1,9 +1,18 @@
 # Frontend para Challenge de Lab Microsystem
 
+
 Frontend ha sido creado utilizando Next.js y Material-UI como parte de un desafío para Lab Microsystem. 
+[Visitar la aplicación desplegada](https://readconnect.vercel.app/)
 
+## Comenzando 🚀
 
-## Instrucciones para Iniciar el Proyecto Localmente
+Estas instrucciones te ayudarán a clonar y configurar el proyecto en tu máquina local para desarrollo y pruebas.
+
+### Prerrequisitos
+
+Antes de comenzar, asegúrate de tener instalado [Node.js](https://nodejs.org/) en tu sistema. Necesitarás una cuenta de [GitHub](https://github.com/) para clonar el repositorio.
+
+### Instalación 🔧
 
 1. Clona este repositorio a tu máquina local:
 
@@ -37,7 +46,7 @@ Asegúrate de configurar las variables de entorno adecuadamente según tus neces
    ```
 _El proyecto se ejecutará en `http://localhost:3000`. Puedes acceder a él desde tu navegador._
    
-## Dependencias
+## Dependencias y Tecnologías
 
 A continuación, se enumeran las principales dependencias utilizadas en este proyecto:
 
