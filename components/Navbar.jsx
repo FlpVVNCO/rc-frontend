@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import {
@@ -16,6 +16,7 @@ import {
 import BookSearch from "./BookSearch";
 import { useSession, signOut } from "next-auth/react";
 import DrawerMenu from "./DrawerMenu";
+import { useRouter } from "next/navigation";
 
 const Links = [
   {
@@ -25,6 +26,7 @@ const Links = [
 ];
 const Navbar = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -36,6 +38,14 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  useEffect(() => {
+    if (session) {
+      router.push("/books"); // Redirige a '/books' si la sesión está activa
+    } else {
+      router.push("login");
+    }
+  }, [session]);
 
   return (
     <Box component="header" sx={{ flexGrow: 1 }}>
