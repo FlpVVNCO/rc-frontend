@@ -44,9 +44,6 @@ const handler = NextAuth({
 
       return session;
     },
-    async redirect(url, baseUrl) {
-      return "https://readconnect.vercel.app" + "/books";
-    },
   },
 });
 
