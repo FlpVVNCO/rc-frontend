@@ -49,8 +49,6 @@ const Navbar = () => {
           <Typography
             fontWeight={600}
             color="white"
-            component={Link}
-            href="/book"
             sx={{ mr: 2, ml: 2, flexGrow: 1, textDecoration: "none" }}
           >
             ReadConnect
