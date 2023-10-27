@@ -1,7 +1,5 @@
-"use client";
-import { Box, Grid, Toolbar, Typography } from "@mui/material";
+import { Grid} from "@mui/material";
 import BookList from "../../components/BookList";
-import FilterList from "../../components/FilterList";
 import Paginator from "../../components/Paginator";
 export default function Books() {
   return (

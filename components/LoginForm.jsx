@@ -23,17 +23,17 @@ export default function LoginForm() {
 
   console.log("user", session?.user);
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async (data, e) => {
+    e.preventDefault();
     const { email, password } = data;
     const res = await signIn("credentials", {
       email,
       password,
       redirect: false,
-      callbackUrl: "/books",
     });
     if (res.ok) {
-      return router.push(res.url);
-    } else setError(true);
+      router.push("/books");
+    } else return setError(true);
   });
 
   return (
