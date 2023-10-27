@@ -51,7 +51,9 @@ const Book = () => {
   const id = open ? "simple-popper" : undefined;
 
   useEffect(() => {
-    getBookByTitle(title);
+    if (title) {
+      getBookByTitle(title);
+    }
   }, [title]);
 
   return (
