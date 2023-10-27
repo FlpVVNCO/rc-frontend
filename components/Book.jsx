@@ -28,6 +28,7 @@ const Book = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [click, setClick] = useState(false);
 
+
   const { book, getBookByTitle, getBookListByUser, list, addBookToList } =
     useBook();
 
@@ -35,7 +36,7 @@ const Book = () => {
 
   const params = useParams();
 
-  const { title } = params;
+  const { name } = params;
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -44,6 +45,7 @@ const Book = () => {
   };
 
   const addToList = (listId) => {
+
     addBookToList(listId, book[0].book_id);
   };
 
@@ -51,10 +53,10 @@ const Book = () => {
   const id = open ? "simple-popper" : undefined;
 
   useEffect(() => {
-    if (title) {
-      getBookByTitle(title);
-    }
-  }, [title]);
+    getBookByTitle(name);
+  }, [name]);
+
+  
 
   return (
     <Grid container>
