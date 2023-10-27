@@ -32,9 +32,9 @@ Asegúrate de configurar las variables de entorno adecuadamente según tus neces
 
 5. Inicia el servidor de desarrollo:
 
-    ```
+   ```
       npm run dev
-    ```
+   ```
 _El proyecto se ejecutará en `http://localhost:3000`. Puedes acceder a él desde tu navegador._
    
 ## Dependencias
