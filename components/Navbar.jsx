@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import BookSearch from "./BookSearch";
 import { useSession, signOut } from "next-auth/react";
+import DrawerMenu from "./DrawerMenu";
 
 const Links = [
   {
@@ -26,6 +27,7 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -35,15 +37,19 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-  // const session = await getServerSession(authOptions);
-
-  // console.log(session);
-
   return (
     <Box component="header" sx={{ flexGrow: 1 }}>
+      <DrawerMenu
+        anchor="left"
+        onClose={() => setOpenDrawer(false)}
+        open={openDrawer}
+      />
       <AppBar position="fixed" component="nav" elevation={0}>
         <Toolbar>
-          <IconButton sx={{ display: { xs: "block", sm: "none" } }}>
+          <IconButton
+            onClick={() => setOpenDrawer(true)}
+            sx={{ display: { xs: "block", sm: "none" } }}
+          >
             <FiMenu color="white" />
           </IconButton>
           <Typography

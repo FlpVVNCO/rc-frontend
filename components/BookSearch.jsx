@@ -29,7 +29,12 @@ const BookSearch = () => {
         {...register("search")}
         InputProps={{
           type: "search",
-          sx: { borderRadius: 12, fontSize: 14, bgcolor: "#fff", width: 400 },
+          sx: {
+            borderRadius: 12,
+            fontSize: 14,
+            bgcolor: "#fff",
+            width: { xs: 200, sm: 400 },
+          },
           startAdornment: (
             <InputAdornment position="start">
               <FiSearch />
@@ -37,7 +42,12 @@ const BookSearch = () => {
           ),
         }}
       />
-      <Button type="submit">Search</Button>
+      <Button
+        type="submit"
+        sx={{ width: { xs: 50, sm: "auto" }, color: "primary" }}
+      >
+        Search
+      </Button>
     </Box>
   );
 };
