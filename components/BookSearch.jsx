@@ -22,7 +22,11 @@ const BookSearch = () => {
   });
 
   return (
-    <Box component="form" onSubmit={onSubmit}>
+    <Box
+      component="form"
+      onSubmit={onSubmit}
+      sx={{ display: "flex", flexFlow: { xs: "column wrap", sm: "row wrap" } }}
+    >
       <TextField
         size="small"
         placeholder="Search"
@@ -33,7 +37,7 @@ const BookSearch = () => {
             borderRadius: 12,
             fontSize: 14,
             bgcolor: "#fff",
-            width: { xs: 200, sm: 400 },
+            width: { xs: "100%", sm: 400 },
           },
           startAdornment: (
             <InputAdornment position="start">

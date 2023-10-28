@@ -21,8 +21,6 @@ export default function LoginForm() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  console.log("user", session?.user);
-
   const onSubmit = handleSubmit(async (data, e) => {
     e.preventDefault();
     const { email, password } = data;
