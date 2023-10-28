@@ -7,12 +7,12 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [error, setError] = useState(false);
-  const [succes, setSucces] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const signup = async (user) => {
     try {
       const res = await registerRequest(user);
-      setSucces(true);
+      setSuccess(true);
     } catch (error) {
       setError(true);
       console.log(error.response);
@@ -28,8 +28,8 @@ export const AuthProvider = ({ children }) => {
         setErrors,
         error,
         setError,
-        succes,
-        setSucces,
+        success,
+        setSuccess,
       }}
     >
       {children}

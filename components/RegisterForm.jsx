@@ -124,12 +124,12 @@ export default function RegisterForm() {
             horizontal: "left",
           }}
           autoHideDuration={2000}
-          open={succes}
+          open={success}
         >
           <Alert
             onClose={() => setSucces(false)}
             variant="filled"
-            severity="succes"
+            severity="success"
           >
             "Registered! Please check your email."
           </Alert>
