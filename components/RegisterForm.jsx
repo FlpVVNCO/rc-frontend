@@ -18,7 +18,14 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm();
 
-  const { signup, errors: registerError, error, setError, succes } = useAuth();
+  const {
+    signup,
+    errors: registerError,
+    error,
+    setError,
+    success,
+    setSuccess,
+  } = useAuth();
 
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
@@ -127,7 +134,7 @@ export default function RegisterForm() {
           open={success}
         >
           <Alert
-            onClose={() => setSucces(false)}
+            onClose={() => setSuccess(false)}
             variant="filled"
             severity="success"
           >
