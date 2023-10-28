@@ -18,7 +18,7 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm();
 
-  const { signup, errors: registerError, error, setError } = useAuth();
+  const { signup, errors: registerError, error, setError, succes } = useAuth();
 
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
@@ -116,6 +116,22 @@ export default function RegisterForm() {
             severity="error"
           >
             Email in use!
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          autoHideDuration={2000}
+          open={succes}
+        >
+          <Alert
+            onClose={() => setSucces(false)}
+            variant="filled"
+            severity="succes"
+          >
+            "Registered! Please check your email."
           </Alert>
         </Snackbar>
       </Box>

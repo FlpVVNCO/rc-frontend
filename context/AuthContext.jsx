@@ -1,21 +1,18 @@
 "use client";
 import { createContext, useState } from "react";
-import { registerRequest, profileRequest } from "../axios/auth";
-
-import { useRouter } from "next/navigation";
+import { registerRequest } from "../axios/auth";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [error, setError] = useState(false);
-  const router = useRouter();
+  const [succes, setSucces] = useState(false);
 
   const signup = async (user) => {
     try {
       const res = await registerRequest(user);
-      console.log(res.data);
-      router.push("/login");
+      setSucces(true);
     } catch (error) {
       setError(true);
       console.log(error.response);
@@ -31,6 +28,8 @@ export const AuthProvider = ({ children }) => {
         setErrors,
         error,
         setError,
+        succes,
+        setSucces,
       }}
     >
       {children}
