@@ -20,6 +20,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  console.log('cambio');
+
   return (
     <AuthContext.Provider
       value={{
